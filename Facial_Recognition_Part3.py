@@ -62,7 +62,7 @@ while True:
             confidence = int(100*(1-(result[1])/300))
             # 유사도 화면에 표시 
             display_string = str(confidence)+'% Confidence it is user'
-        cv2.putText(image,display_string,(100,120), cv2.FONT_HERSHEY_COMPLEX,1,(250,120,255),2)
+            cv2.putText(image,display_string,(100,120), cv2.FONT_HERSHEY_COMPLEX,1,(250,120,255),2)
         #75 보다 크면 동일 인물로 간주해 UnLocked! 
         if confidence > 75:
             cv2.putText(image, "Unlocked", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)

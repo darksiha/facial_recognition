@@ -6,7 +6,7 @@ from os import makedirs
 from os.path import isdir
 
 #얼굴 저장 함수
-face_dirs = 'faces/kyu'
+face_dirs = 'faces/'
 
 #얼굴 인식용 xml 파일
 #face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -34,7 +34,7 @@ def take_pictures(name):
     # 해당 이름의 폴더가 없다면 생성
     if not isdir(face_dirs+name):
         makedirs(face_dirs+name)
-        
+
     #카메라 on
     cap = cv2.VideoCapture(0)
     #저장할 이미지 카운트 변수
@@ -51,14 +51,15 @@ def take_pictures(name):
             
             #조정 이미지를 흑백으로 변환
             face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
-            #faces폴더에 jpg파일로 저장
-            #ex > faces/user0.jpg   faces/user1.jpg ....
-            file_name_path = 'faces/user'+str(count)+'.jpg'
-        
-            #화면에 얼굴과 현재 저장 개수 표시
+            # 200x200 흑백 사진을 faces/얼굴 이름/userxx.jpg로 저장
+            #ex > faces/얼굴 이름/user0.jpg   faces/얼굴 이름/user1.jpg ....
+            file_name_path = face_dirs + name + '/user'+str(count)+'.jpg'
+            #file_name_path = 'face/user'+str(count)+'.jpg'
+            
             cv2.imwrite(file_name_path,face)
-
-            cv2.putText(face,str(count),(50,50),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
+            print (str(count)+' 저장')
+            #화면에 얼굴과 현재 저장 개수 표시
+            #cv2.putText(face,str(count),(50,50),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
             #cv2.imshow('Face Cropper',face)
         else:
             print("Face not Found")
@@ -75,4 +76,4 @@ def take_pictures(name):
     
 if __name__ == "__main__":
     # 사진 저장할 이름 넣어서 함수 호출
-    take_pictures('kyu')
+    take_pictures("jmk")
