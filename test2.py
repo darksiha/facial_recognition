@@ -6,6 +6,7 @@ with picamera.PiCamera() as camera:
     camera.framerate = 30
     camera.start_preview()
     time.sleep(2)
+    
     camera.capture_sequence(['imgs/frame_img/image1.jpg',
                              'imgs/frame_img/image2.jpg',
                              'imgs/frame_img/image3.jpg',

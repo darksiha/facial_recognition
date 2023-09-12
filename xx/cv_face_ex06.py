@@ -3,7 +3,7 @@ from cam import USBCam
 import cv2
  
 FACE_WIDTH = 200
-face_cascade = cv2.CascadeClassifier('/home/blud/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 ix = 0
 def save_image(img):
     global ix
